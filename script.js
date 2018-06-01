@@ -1,144 +1,213 @@
 // Add some snazzy JS to make it an actual calculator!
 
-var display = "";
+// BUG NEEDING TO BE FIXED: you can enter more than one decimal point in the input. Will fix tomorrow :sleep-emoji:
 
-// if calculated number/entered number is larger than 10 digits, give error message
+var display = "0";
+
+var input = "";
+
+// if calculated number/entered number is larger than 10 digits, give error message and truncate
 
 function error() {
   var length = 10; //length of window p
   if (display.length > length) {
-    display = "¯\\_(ツ)_/¯"
-    print();
-    document.getElementById('window').style.fontSize = "30px";
-    alert("Too many numbers!")
+    alert("Too many numbers! My display is so smol ¯\\_(ツ)_/¯");
+  input = input.substring(0, input.length-1);
+  display = input;
+  updateDisplay();
+  }
+}
+
+//evaluate stored input and return answer - truncate if longer than 10 digits
+
+function evaluate() {
+  return eval(input);
+}
+
+//clear the display after operators
+
+function clearDisplay () {
+  if ((display === "+") || (display === "-") || (display === "x") || (display === "÷") || (display === "0")) {
+    display = "";
+    console.log(display);
   }
 }
 
 //change calc window text
 
-function print() {
+function updateDisplay() {
   document.getElementById('window').textContent = display;
 }
+
+// CE (CLEAR ALL) BUTTON
+
+document.getElementById("CE").addEventListener("click",() => {
+      display = "0";
+      input = "";
+      updateDisplay();
+});
+
+// C (BACKSPACE) BUTTON
+
+document.getElementById("C").addEventListener("click",() => {
+      input = input.substring(0, input.length-1);
+      display = input;
+      updateDisplay();
+});
 
 // PLUS BUTTON
 
 document.getElementById("plus").addEventListener("click",() => {
       display = "+";
-      print();
+      input += "+";
+      updateDisplay();
 });
 
 // MINUS BUTTON
 
 document.getElementById("minus").addEventListener("click",() => {
       display = "-";
-      print();
+      input += "-";
+      updateDisplay();
 });
 
 // DIVIDE BUTTON
 
 document.getElementById("divide").addEventListener("click",() => {
       display = "÷";
-      print();
+      input += "/";
+      updateDisplay();
 });
 
 // TIMES BUTTON
 
 document.getElementById("times").addEventListener("click",() => {
       display = "x";
-      print();
+      input += "*";
+      updateDisplay();
 });
 
 // PERIOD
 
 document.getElementById("period").addEventListener("click",() => {
       display += ".";
-      print();
+      input += ".";
+      updateDisplay();
       error();
 });
 
-// PERIOD
+// EQUALS
 
 document.getElementById("equals").addEventListener("click",() => {
-      print();
-      error();
+      var answer = evaluate(input);
+      answer = answer.toString();
+      if (answer.length > 10) {
+        answer = answer.substring(0, 10);
+      }
+      display = answer;
+      input = answer;
+      updateDisplay();
 });
 
 // ONE
 
 document.getElementById("one").addEventListener("click",() => {
+      clearDisplay();
       display += "1";
-      print();
+      input += "1";
+      updateDisplay();
       error();
 });
 
 // TWO
 
 document.getElementById("two").addEventListener("click",() => {
+      clearDisplay();
       display += "2";
-      print();
+      input += "2";
+      clearDisplay();
+      updateDisplay();
       error();
 });
 
 // THREE
 
 document.getElementById("three").addEventListener("click",() => {
+      clearDisplay();
       display += "3";
-      print();
-      error();
+      input += "3";
+      clearDisplay();
+      updateDisplay();
+      error();  
 });
 
 // FOUR
 
 document.getElementById("four").addEventListener("click",() => {
+      clearDisplay();
       display += "4";
-      print();
+      input += "4";
+      updateDisplay();
       error();
 });
 
 // FIVE
 
 document.getElementById("five").addEventListener("click",() => {
+      clearDisplay();
       display += "5";
-      print();
-      error();
+      input += "5";
+      updateDisplay();
+      error();  
 });
 
 // SIX
 
 document.getElementById("six").addEventListener("click",() => {
+      clearDisplay();
       display += "6";
-      print();
+      input += "6";
+      updateDisplay();
       error();
 });
 
 // SEVEN
 
 document.getElementById("seven").addEventListener("click",() => {
+      clearDisplay();
       display += "7";
-      print();
+      input += "7";
+      updateDisplay();
       error();
 });
 
 // EIGHT
 
 document.getElementById("eight").addEventListener("click",() => {
+      clearDisplay();
       display += "8";
-      print();
+      input += "8";
+      updateDisplay();
       error();
 });
 
 // NINE
 
 document.getElementById("nine").addEventListener("click",() => {
+      clearDisplay();
       display += "9";
-      print();
+      input += "9";
+      updateDisplay();
       error();
 });
 
 // ZERO
 
 document.getElementById("zero").addEventListener("click",() => {
+      clearDisplay();
       display += "0";
-      print();
+      input += "0";
+      updateDisplay();
       error();
 });
+
