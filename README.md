@@ -1,14 +1,12 @@
 # Is this the most useless calculator?
 <br>
-=================
-<br>
 Probably.
 <br>
-### Is this the most *kawaii* calculator?
+**Is this the most *kawaii* calculator?**
 <br>
 *You betcha*.
 <br>
-To do:
+**To do**
 <br>
 * Add actual functionality with JS
 <br>
