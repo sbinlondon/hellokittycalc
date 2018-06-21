@@ -2,6 +2,8 @@
 
 // BUG NEEDING TO BE FIXED: you can enter more than one decimal point in the input. Will fix tomorrow :sleep-emoji:
 
+// REQUEST: add keyboard support so calc can be used that way
+
 var display = "0";
 
 var input = "";
